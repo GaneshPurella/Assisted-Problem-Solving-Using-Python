@@ -1,7 +1,3 @@
--- =====================================================================
--- Task 1: Schema Generation for Library Management System
--- =====================================================================
-
 -- Drop tables if they exist to ensure a clean slate for creation.
 DROP TABLE IF EXISTS Loans;
 DROP TABLE IF EXISTS Books;
