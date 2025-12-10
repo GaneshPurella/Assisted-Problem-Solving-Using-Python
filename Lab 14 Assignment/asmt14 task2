@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Info Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header" role="banner" aria-label="Student Info Portal header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">SI</div>
+          <div class="brand-text">
+            <p class="site-title">Student Info Portal</p>
+            <p class="site-sub">Quick access to student records, courses, and announcements</p>
+          </div>
+        </div>
+
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+          <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+          <div id="primary-navigation" class="nav-links" role="menubar" aria-label="Primary">
+            <a href="#" role="menuitem" aria-current="page">Home</a>
+            <a href="#students" role="menuitem">Students</a>
+            <a href="#courses" role="menuitem">Courses</a>
+            <a href="#announcements" role="menuitem">Announcements</a>
+            <a href="#about" role="menuitem">About</a>
+            <a href="#contact" role="menuitem">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <h1 id="hero-heading">Welcome to the Student Info Portal</h1>
+          <p>Manage student profiles, view course enrollment, and stay up to date with campus announcements.</p>
+          <div class="actions" aria-hidden="false">
+            <button class="btn primary">Get Started</button>
+            <button class="btn ghost">View Documentation</button>
+          </div>
+        </div>
+
+        <div class="user-info">
+          <p class="muted">Logged in as</p>
+          <strong>Guest User</strong>
+          <p class="muted small">Role: Visitor</p>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Quick links">
+        <article class="card" id="students">
+          <h3>Students</h3>
+          <p class="muted">Search and manage student profiles, edit contact info and academic records.</p>
+        </article>
+
+        <article class="card" id="courses">
+          <h3>Courses</h3>
+          <p class="muted">Browse course catalog, manage sections, and view enrollment statistics.</p>
+        </article>
+
+        <article class="card" id="announcements">
+          <h3>Announcements</h3>
+          <p class="muted">Post campus-wide announcements and view recent notices.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-inner">
+        &copy; <span id="year"></span> Student Info Portal — Built with accessibility and simplicity in mind.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple mobile nav toggle and year injection
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-navigation');
+      if(toggle && nav){
+        toggle.addEventListener('click', function(){
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('show');
+        });
+      }
+      // inject current year
+      const y = new Date().getFullYear();
+      const el = document.getElementById('year');
+      if(el) el.textContent = y;
+    })();
+  </script>
+</body>
+</html>
