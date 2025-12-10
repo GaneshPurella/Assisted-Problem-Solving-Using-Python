@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Info Portal</title>
+  <style>
+    :root{
+      --primary: #2b6cb0;
+      --accent: #f6ad55;
+      --bg: #f7fafc;
+      --text: #1a202c;
+      --muted: #718096;
+      --container: 1100px;
+      --radius: 8px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:1rem;
+    }
+
+    header.site-header{
+      background:linear-gradient(90deg, rgba(43,108,176,0.95), rgba(43,108,176,0.85));
+      color:white;
+      padding:1rem 0;
+      border-radius: var(--radius);
+      margin-top:1rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+    }
+    .logo{
+      width:48px;
+      height:48px;
+      background:var(--accent);
+      border-radius:8px;
+      display:inline-grid;
+      place-items:center;
+      color: #fff;
+      font-weight:700;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .site-title{
+      font-size:1.25rem;
+      font-weight:700;
+      margin:0;
+    }
+    .site-sub{
+      margin:0;
+      font-size:0.875rem;
+      opacity:0.95;
+    }
+
+    nav.main-nav{
+      margin-top:0.75rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:0.5rem;
+      flex-wrap:wrap;
+    }
+    .nav-links a{
+      color:white;
+      text-decoration:none;
+      padding:0.45rem 0.75rem;
+      border-radius:6px;
+      transition:background 160ms;
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .nav-links a:hover, .nav-links a:focus{
+      background:rgba(255,255,255,0.08);
+      outline:none;
+    }
+
+    /* Mobile toggle */
+    .nav-toggle{
+      display:none;
+      background:transparent;
+      border:0;
+      color:white;
+      font-size:1.1rem;
+      cursor:pointer;
+    }
+
+    main{
+      margin-top:1rem;
+    }
+    .hero{
+      background:white;
+      padding:1.25rem;
+      border-radius:var(--radius);
+      box-shadow:0 6px 18px rgba(15,23,42,0.06);
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .hero h1{margin:0 0 .25rem 0}
+    .hero p{margin:0;color:var(--muted)}
+
+    .actions{
+      display:flex;
+      gap:.5rem;
+      margin-top:.5rem;
+    }
+    .btn{
+      padding:.5rem .9rem;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn.primary{
+      background:var(--primary);
+      color:white;
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--primary);
+      border:1px solid rgba(43,108,176,0.12);
+    }
+
+    .grid{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:1rem;
+    }
+    .card{
+      background:white;
+      padding:1rem;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(15,23,42,0.04);
+    }
+    .card h3{margin:.25rem 0 .5rem 0}
+    .muted{color:var(--muted); font-size:0.95rem}
+
+    footer.site-footer{
+      margin-top:1rem;
+      color:var(--muted);
+      text-align:center;
+      padding:1rem 0;
+      font-size:0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2, 1fr)}
+    }
+    @media (max-width:640px){
+      .nav-links{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        margin-top:.5rem;
+      }
+      .nav-links.show{display:flex}
+      .nav-toggle{display:inline-block}
+      .grid{grid-template-columns:1fr}
+      .hero{flex-direction:column; align-items:flex-start}
+      .brand{gap:.5rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header" role="banner" aria-label="Student Info Portal header">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+        <div class="brand" style="display:flex;align-items:center">
+          <div class="logo" aria-hidden="true">SI</div>
+          <div>
+            <p class="site-title">Student Info Portal</p>
+            <p class="site-sub">Quick access to student records, courses, and announcements</p>
+          </div>
+        </div>
+
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+          <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+          <div id="primary-navigation" class="nav-links" role="menubar" aria-label="Primary">
+            <a href="#" role="menuitem" aria-current="page">Home</a>
+            <a href="#students" role="menuitem">Students</a>
+            <a href="#courses" role="menuitem">Courses</a>
+            <a href="#announcements" role="menuitem">Announcements</a>
+            <a href="#about" role="menuitem">About</a>
+            <a href="#contact" role="menuitem">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <h1 id="hero-heading">Welcome to the Student Info Portal</h1>
+          <p>Manage student profiles, view course enrollment, and stay up to date with campus announcements.</p>
+          <div class="actions" aria-hidden="false">
+            <button class="btn primary">Get Started</button>
+            <button class="btn ghost">View Documentation</button>
+          </div>
+        </div>
+
+        <div style="min-width:220px;text-align:right">
+          <p class="muted">Logged in as</p>
+          <strong>Guest User</strong>
+          <p style="margin:.5rem 0 0 0" class="muted">Role: Visitor</p>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Quick links">
+        <article class="card" id="students">
+          <h3>Students</h3>
+          <p class="muted">Search and manage student profiles, edit contact info and academic records.</p>
+        </article>
+
+        <article class="card" id="courses">
+          <h3>Courses</h3>
+          <p class="muted">Browse course catalog, manage sections, and view enrollment statistics.</p>
+        </article>
+
+        <article class="card" id="announcements">
+          <h3>Announcements</h3>
+          <p class="muted">Post campus-wide announcements and view recent notices.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div>
+        &copy; <span id="year"></span> Student Info Portal — Built with accessibility and simplicity in mind.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple mobile nav toggle and year injection
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-navigation');
+      if(toggle && nav){
+        toggle.addEventListener('click', function(){
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('show');
+        });
+      }
+      // inject current year
+      const y = new Date().getFullYear();
+      const el = document.getElementById('year');
+      if(el) el.textContent = y;
+    })();
+  </script>
+</body>
+</html>
